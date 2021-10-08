@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Context } from "../contexts/BlogContext";
 import { FontAwesome } from "@expo/vector-icons";
-const IndexScreen = () => {
+const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
   return (
     <View>
@@ -18,16 +18,23 @@ const IndexScreen = () => {
         data={state}
         keyExtractor={(blog) => blog.title}
         renderItem={({ item }) => (
-          <View style={styles.blogPost}>
-            <Text style={styles.title}> {item.title}</Text>
-            <TouchableOpacity
-              onPress={() => {
-                deleteBlogPost(item.id);
-              }}
-            >
-              <FontAwesome name="trash-o" size={24} color="black" />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Show", { id: item.id });
+            }}
+          >
+            <View style={styles.blogPost}>
+              <Text style={styles.title}> {item.title}</Text>
+
+              <TouchableOpacity
+                onPress={() => {
+                  deleteBlogPost(item.id);
+                }}
+              >
+                <FontAwesome name="trash-o" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
         )}
       />
     </View>
