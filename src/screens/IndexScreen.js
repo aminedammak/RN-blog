@@ -11,9 +11,9 @@ import { Context } from "../contexts/BlogContext";
 import { FontAwesome } from "@expo/vector-icons";
 const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+
   return (
     <View>
-      <Button title="Add a blog" onPress={addBlogPost} />
       <FlatList
         data={state}
         keyExtractor={(blog) => blog.title}
