@@ -1,11 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { Context } from "../contexts/BlogContext";
 
-const CreateScreen = ({ navigation }) => {
+const CreateScreen = ({ navigation, route }) => {
   const { state, addBlogPost } = useContext(Context);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (route.params?.hasOwnProperty("id")) {
+      const id = route.params.id;
+      const editPost = state.find((item) => {
+        return item.id === id;
+      });
+      if (editPost) {
+        setTitle(editPost.title);
+        setContent(editPost.content);
+      }
+    }
+  }, []);
+
   return (
     <View>
       <Text>Enter title</Text>
