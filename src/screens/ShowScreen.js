@@ -13,7 +13,7 @@ const ShowScreen = ({ route, navigation }) => {
       headerRight: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Create", { id });
+            navigation.navigate("Edit", { id });
           }}
         >
           <Feather name="edit-2" size={24} color="black" />

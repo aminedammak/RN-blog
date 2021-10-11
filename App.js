@@ -7,6 +7,7 @@ import IndexScreen from "./src/screens/IndexScreen";
 import ShowScreen from "./src/screens/ShowScreen";
 import CreateScreen from "./src/screens/CreateScreen";
 import { Feather } from "@expo/vector-icons";
+import EditScreen from "./src/screens/EditScreen";
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
             name="Create"
             component={CreateScreen}
             options={{ title: "Create" }}
+          />
+          <Stack.Screen
+            name="Edit"
+            component={EditScreen}
+            options={{ title: "Edit" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
