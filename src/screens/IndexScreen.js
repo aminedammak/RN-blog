@@ -14,6 +14,10 @@ const IndexScreen = ({ navigation }) => {
 
   useEffect(() => {
     getBlogPosts();
+    const unsubscribe = navigation.addListener("focus", () => {
+      getBlogPosts();
+    });
+    return unsubscribe;
   }, []);
 
   return (
